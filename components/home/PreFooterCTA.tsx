@@ -1,21 +1,25 @@
 "use client";
 
-import { useMemo } from "react";
+import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 
+type Particle = { left: number; top: number; duration: number; delay: number };
+
 export function PreFooterCTA() {
   const prefersReducedMotion = useReducedMotion();
-  const particles = useMemo(
-    () =>
+  const [particles, setParticles] = useState<Particle[]>([]);
+
+  useEffect(() => {
+    setParticles(
       Array.from({ length: 40 }, () => ({
         left: Math.random() * 100,
         top: Math.random() * 100,
         duration: 12 + Math.random() * 12,
         delay: Math.random() * 6,
-      })),
-    []
-  );
+      }))
+    );
+  }, []);
 
   return (
     <section className="relative overflow-hidden bg-navy py-[var(--section-y)]">

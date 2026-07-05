@@ -276,7 +276,7 @@ function FullPipeline({
               <motion.div
                 initial={{ scale: 0, rotate: -6, opacity: 0 }}
                 animate={{ scale: [0, 1.1, 1], rotate: -6, opacity: 1 }}
-                transition={{ type: "spring", duration: 0.6 }}
+                transition={{ duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }}
                 className="font-mono-chivora absolute -top-4 right-4 rounded border-2 border-success px-3 py-1 text-xs font-medium text-success bg-white"
               >
                 RECONCILED ✓ 100%

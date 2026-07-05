@@ -38,7 +38,7 @@ export default async function InsightArticlePage({
     <>
       <Nav />
       <main className="flex-1">
-        <article className="mx-auto max-w-[680px] px-6 py-16">
+        <article className="mx-auto max-w-4xl px-6 py-16">
           <FadeUp>
             <div className="flex items-center gap-2">
               <span className="font-mono-chivora text-[10px] tracking-[0.08em] text-blue uppercase">
@@ -78,7 +78,7 @@ export default async function InsightArticlePage({
               }
               return (
                 <FadeUp key={i} delay={i * 0.03}>
-                  <p className="text-[var(--text-body)] leading-[1.7] text-ink-soft">
+                  <p className="text-justify text-[var(--text-body)] leading-[1.7] text-ink-soft">
                     {block}
                   </p>
                 </FadeUp>

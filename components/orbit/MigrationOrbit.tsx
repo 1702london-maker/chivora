@@ -11,7 +11,10 @@ const R2 = 280;
 
 function polar(r: number, angleDeg: number) {
   const rad = (angleDeg * Math.PI) / 180;
-  return { x: CENTER + r * Math.cos(rad), y: CENTER + r * Math.sin(rad) };
+  return {
+    x: Math.round((CENTER + r * Math.cos(rad)) * 100) / 100,
+    y: Math.round((CENTER + r * Math.sin(rad)) * 100) / 100,
+  };
 }
 
 export function MigrationOrbit() {
@@ -97,7 +100,7 @@ export function MigrationOrbit() {
             <motion.div
               key={d.code}
               className="absolute"
-              style={{ left: pos.x, top: pos.y, translate: "-50% -50%" }}
+              style={{ left: `${pos.x}px`, top: `${pos.y}px`, translate: "-50% -50%" }}
               animate={prefersReducedMotion || paused ? {} : { rotate: -360 }}
               transition={{ duration: 48, repeat: Infinity, ease: "linear" }}
             >
@@ -141,7 +144,7 @@ export function MigrationOrbit() {
             <motion.div
               key={s.slug}
               className="absolute"
-              style={{ left: pos.x, top: pos.y, translate: "-50% -50%" }}
+              style={{ left: `${pos.x}px`, top: `${pos.y}px`, translate: "-50% -50%" }}
               animate={prefersReducedMotion || paused ? {} : { rotate: 360 }}
               transition={{ duration: 72, repeat: Infinity, ease: "linear" }}
             >

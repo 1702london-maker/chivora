@@ -288,7 +288,10 @@ export default function HowWeEngagePage() {
               </Button>
             </div>
             <p className="mt-4 text-sm text-white/50">
-              Prefer email first? Reach us at hello@chivora.co.uk
+              Prefer email first? Reach us at hello@chivora.co.uk — or call{" "}
+              <a href="tel:+447918554877" className="hover:text-white">
+                +44 7918 554877
+              </a>
             </p>
           </div>
         </section>

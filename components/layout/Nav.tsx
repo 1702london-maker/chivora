@@ -68,7 +68,7 @@ export function Nav() {
             <span className="font-display text-xl font-bold text-ink">Chivora</span>
           </Link>
 
-          <div className="hidden items-center gap-8 lg:flex">
+          <div className="hidden flex-nowrap items-center gap-5 xl:gap-6 lg:flex">
             {NAV_LINKS.map((link) =>
               link.dropdown ? (
                 <div
@@ -77,9 +77,9 @@ export function Nav() {
                   onMouseEnter={() => setOpenDropdown(link.dropdown)}
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
-                  <button className="group flex items-center gap-1 text-sm font-medium text-ink-soft transition-colors hover:text-ink">
+                  <button className="group flex items-center gap-1 whitespace-nowrap text-sm font-medium text-ink-soft transition-colors hover:text-ink">
                     {link.label}
-                    <ChevronDown className="h-3.5 w-3.5 stroke-ink-mute transition-colors group-hover:stroke-blue" />
+                    <ChevronDown className="h-3.5 w-3.5 shrink-0 stroke-ink-mute transition-colors group-hover:stroke-blue" />
                   </button>
 
                   <AnimatePresence>
@@ -147,7 +147,7 @@ export function Nav() {
                 <Link
                   key={link.label}
                   href={link.href!}
-                  className="text-sm font-medium text-ink-soft transition-colors hover:text-ink"
+                  className="whitespace-nowrap text-sm font-medium text-ink-soft transition-colors hover:text-ink"
                 >
                   {link.label}
                 </Link>
@@ -155,14 +155,8 @@ export function Nav() {
             )}
           </div>
 
-          <div className="hidden items-center gap-6 lg:flex">
-            <a
-              href="tel:+447918554877"
-              className="font-mono-chivora text-sm text-ink-mute transition-colors hover:text-blue"
-            >
-              +44 7918 554877
-            </a>
-            <Button href="/contact" className="!px-5 !py-2.5 text-sm">
+          <div className="hidden shrink-0 items-center lg:flex">
+            <Button href="/contact" className="!px-5 !py-2.5 whitespace-nowrap text-sm">
               Book a discovery call
             </Button>
           </div>

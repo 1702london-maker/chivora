@@ -51,14 +51,14 @@ export default function AboutPage() {
         </section>
 
         {/* Founder bio — text stands alone until a real headshot is added */}
-        <section className="mx-auto max-w-3xl px-6 py-[var(--section-y)]">
+        <section className="mx-auto max-w-4xl px-6 py-[var(--section-y)]">
           <FadeUp>
             <Eyebrow>The Founder</Eyebrow>
             <h2 className="font-display mt-3 text-[var(--text-h2)] font-bold tracking-[-0.02em] text-ink">
               Sunday Ukwungwu — Founder &amp; Director
             </h2>
 
-            <div className="mt-6 flex flex-col gap-4 text-[var(--text-body)] leading-[1.7] text-ink-soft">
+            <div className="mt-6 flex flex-col gap-4 text-justify text-[var(--text-body)] leading-[1.7] text-ink-soft">
               <p>I started Chivora because data migration kept being the thing that went wrong.</p>
               <p>
                 Across <TodoChip>7</TodoChip> years working on ERP
@@ -197,13 +197,13 @@ export default function AboutPage() {
         </section>
 
         {/* Competitive advantage */}
-        <section className="mx-auto max-w-3xl px-6 py-[var(--section-y)]">
+        <section className="mx-auto max-w-4xl px-6 py-[var(--section-y)]">
           <FadeUp>
             <Eyebrow>Why This Matters</Eyebrow>
             <h2 className="font-display mt-3 text-[var(--text-h2)] font-bold tracking-[-0.02em] text-ink">
               Most D365 projects treat data migration as an afterthought.
             </h2>
-            <p className="mt-4 text-[var(--text-body)] leading-[1.7] text-ink-soft">
+            <p className="mt-4 text-justify text-[var(--text-body)] leading-[1.7] text-ink-soft">
               On most implementations, data migration is handed to a
               functional consultant to run alongside their configuration
               work — squeezed into whatever time is left between workshops.
@@ -211,7 +211,7 @@ export default function AboutPage() {
               first mock migration, when balances don&apos;t reconcile and
               nobody on the programme owns the fix.
             </p>
-            <p className="mt-4 text-[var(--text-body)] leading-[1.7] text-ink-soft">
+            <p className="mt-4 text-justify text-[var(--text-body)] leading-[1.7] text-ink-soft">
               We exist because that pattern is predictable and avoidable.
               Treating data migration as its own workstream, with a
               dedicated team and a repeatable methodology, is the difference

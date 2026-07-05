@@ -64,7 +64,7 @@ export const INSIGHTS: InsightArticle[] = [
     slug: "dmf-vs-kingswaysoft-vs-scribe",
     title: "DMF vs KingswaySoft vs Scribe",
     category: "Technical",
-    published: false,
+    published: true,
     readTime: "7 min read",
     excerpt: "Choosing the right migration tooling for your source system.",
     body: [
@@ -78,7 +78,7 @@ export const INSIGHTS: InsightArticle[] = [
     slug: "migrating-open-ar-ap-transactions-lessons-learned",
     title: "Migrating open AR/AP transactions: lessons learned",
     category: "Technical",
-    published: false,
+    published: true,
     readTime: "5 min read",
     excerpt: "Why open items are the hardest part of any ledger migration.",
     body: [
