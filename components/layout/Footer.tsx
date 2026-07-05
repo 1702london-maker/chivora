@@ -18,11 +18,11 @@ export function Footer() {
               time.
             </p>
             <Link
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/sunday-ukwungwu-0bb642161"
               className="group mt-6 inline-flex items-center gap-2 text-sm text-ink-soft transition-colors hover:text-blue"
             >
               <Link2 className="h-4 w-4 stroke-ink-mute transition-colors group-hover:stroke-blue" />
-              LinkedIn
+              linkedin.com/in/sunday-ukwungwu
             </Link>
           </div>
 
@@ -75,7 +75,9 @@ export function Footer() {
               </li>
               <li className="group flex items-center gap-2">
                 <Phone className="h-3.5 w-3.5 stroke-ink-mute transition-colors group-hover:stroke-blue" />
-                +44 20 0000 0000
+                <a href="tel:+447918554877" className="hover:text-blue">
+                  +44 7918 554877
+                </a>
               </li>
               <li>
                 <Link

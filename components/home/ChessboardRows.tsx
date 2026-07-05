@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import Link from "next/link";
 import { DottedArc } from "@/components/motion/DottedArc";
 import { FadeUp } from "@/components/motion/FadeUp";
 import { SOURCE_SYSTEMS } from "@/lib/constants";
@@ -47,6 +48,12 @@ export function ChessboardRows() {
             Data migration sits alongside your programme, functional
             consultants and SI partner, not in competition with them.
           </p>
+          <Link
+            href="/how-we-engage"
+            className="mt-3 inline-block text-sm font-medium text-blue"
+          >
+            See how SI partner engagements work →
+          </Link>
         </div>
       </Row>
     </section>

@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { FadeUp } from "@/components/motion/FadeUp";
 import { ToolsRow } from "@/components/home/ToolsRow";
+import { TodoChip } from "@/components/ui/TodoChip";
 import { Check, X } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -49,31 +50,108 @@ export default function AboutPage() {
           </FadeUp>
         </section>
 
-        {/* Founder / team — placeholder, do not invent name or bio */}
-        <section className="mx-auto max-w-7xl px-6 py-[var(--section-y)]">
-          <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
-            <FadeUp fromX={-32}>
-              <div className="relative aspect-[4/5] w-full max-w-sm overflow-hidden rounded-[var(--radius-card)] border-2 border-blue bg-gradient-to-br from-ink to-navy">
-                <div className="flex h-full items-center justify-center">
-                  <span className="font-mono-chivora text-xs tracking-[0.08em] text-white/40 uppercase">
-                    Team photo placeholder
-                  </span>
-                </div>
-              </div>
-            </FadeUp>
-            <FadeUp fromX={32}>
-              <Eyebrow>The Team</Eyebrow>
-              <h2 className="font-display mt-3 text-[var(--text-h2)] font-bold tracking-[-0.02em] text-ink">
-                A small team, deliberately.
-              </h2>
-              <p className="mt-4 max-w-[52ch] text-ink-soft">
-                [Team bio placeholder — awaiting sign-off on names, headshots
-                and backgrounds. We won&apos;t publish fabricated
-                biographical details here. This section is ready to receive
-                real content on request.]
+        {/* Founder bio — text stands alone until a real headshot is added */}
+        <section className="mx-auto max-w-3xl px-6 py-[var(--section-y)]">
+          <FadeUp>
+            <Eyebrow>The Founder</Eyebrow>
+            <h2 className="font-display mt-3 text-[var(--text-h2)] font-bold tracking-[-0.02em] text-ink">
+              Sunday Ukwungwu — Founder &amp; Director
+            </h2>
+
+            <div className="mt-6 flex flex-col gap-4 text-[var(--text-body)] leading-[1.7] text-ink-soft">
+              <p>I started Chivora because data migration kept being the thing that went wrong.</p>
+              <p>
+                Across <TodoChip>7</TodoChip> years working on ERP
+                transformation programmes — including implementations
+                moving organisations from Microsoft Dynamics NAV and SAP
+                into Dynamics 365 — I watched the same failure play out
+                repeatedly. The functional design would be solid. The
+                configuration would be done. The training would be
+                delivered. And then, in the final weeks before go-live, the
+                data would surface problems that should have been found in
+                month two.
               </p>
-            </FadeUp>
-          </div>
+              <p>
+                The reason was always the same: nobody had owned data
+                migration as a discipline. It had been distributed across
+                people with other priorities, no dedicated tooling, and no
+                structured methodology. It was treated as something that
+                would &quot;just happen&quot; alongside everything else —
+                and it didn&apos;t.
+              </p>
+              <p>
+                I have been part of <TodoChip>6</TodoChip> migration
+                projects across that period, working across General Ledger,
+                Accounts Receivable, Accounts Payable, Inventory, Fixed
+                Assets, Customers, and Vendors — and across source systems
+                including SAP, Microsoft Dynamics NAV, SAGE, BPCS, IFS, and
+                Access Dimensions. I know where the problems hide in each of
+                those systems because I have found them, documented them,
+                and fixed them under real delivery pressure.
+              </p>
+              <p>
+                Chivora exists to provide what those programmes were
+                missing: a single, accountable specialist who owns data
+                migration from discovery through to post-go-live sign-off,
+                with a methodology built from real delivery experience
+                rather than generic best practice.
+              </p>
+            </div>
+
+            <blockquote className="mt-8 border-l-2 border-blue pl-6">
+              <p className="font-display text-lg font-medium text-ink">
+                &quot;We only do data migration. Not configuration, not
+                project management, not general IT. That focus is not a
+                limitation — it is the reason we&apos;re better at it.&quot;
+              </p>
+              <p className="mt-2 font-mono-chivora text-xs tracking-[0.08em] text-ink-mute uppercase">
+                Sunday Ukwungwu, Founder &amp; Director — Chivora
+              </p>
+            </blockquote>
+
+            <div className="mt-10">
+              <p className="font-mono-chivora text-xs tracking-[0.08em] text-blue uppercase">
+                Background &amp; Experience
+              </p>
+              <ul className="mt-4 flex flex-col gap-2.5 text-sm text-ink-soft">
+                <li>
+                  <TodoChip>7</TodoChip>+ years working on ERP transformation
+                  and data migration programmes
+                </li>
+                <li>
+                  <TodoChip>6</TodoChip> D365 migration projects delivered
+                  across F&amp;O and CE platforms
+                </li>
+                <li>Source systems: Microsoft Dynamics NAV, SAP (ECC), SAGE, BPCS, IFS, Access Dimensions</li>
+                <li>Domains: GL, AR, AP, Inventory, Fixed Assets, Customers, Vendors — full coverage</li>
+                <li>Tools: DIXF / Data Management Framework, KingswaySoft, SQL Server, Excel / Power Query, Power BI</li>
+                <li>
+                  <TodoChip>Microsoft certifications — to be added if held (e.g. MB-300, MB-700, DP-900)</TodoChip>
+                </li>
+                <li>Nwoye Concepts Ltd — registered in England and Wales, Company No. 9776455</li>
+              </ul>
+            </div>
+
+            <div className="mt-10">
+              <p className="font-mono-chivora text-xs tracking-[0.08em] text-blue uppercase">
+                How I Work
+              </p>
+              <p className="mt-4 text-sm leading-[1.7] text-ink-soft">
+                Chivora takes on a small number of engagements at a time —
+                by design. Every client gets my direct involvement from the
+                first discovery conversation through to post-go-live
+                sign-off. There are no account managers, no junior
+                handoffs, and no situations where the person who scoped the
+                work is not the person delivering it.
+              </p>
+              <p className="mt-4 text-sm leading-[1.7] text-ink-soft">
+                I work remotely as standard, with on-site attendance for key
+                workshops, mock migration reviews, and cutover. I am based
+                in the UK and available for programmes across the UK and,
+                where the engagement is primarily remote, internationally.
+              </p>
+            </div>
+          </FadeUp>
         </section>
 
         {/* What we are / what we are not */}

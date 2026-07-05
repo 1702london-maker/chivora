@@ -25,7 +25,7 @@ export interface ServiceContent {
   ctaSub: string;
 }
 
-const ALL_DOMAINS = ["GL", "AR", "AP", "INV", "FA", "CUST", "VEND"];
+const ALL_DOMAINS = ["GL", "AR", "AP", "INV", "FA", "CUST", "VEND", "HR", "OSO", "OPO"];
 const ALL_SYSTEMS = ["sap", "oracle", "sage", "dynamics-nav", "bpcs", "ifs", "access-dimensions"];
 
 export const SERVICES_CONTENT: ServiceContent[] = [
@@ -70,9 +70,9 @@ export const SERVICES_CONTENT: ServiceContent[] = [
     systems: ALL_SYSTEMS,
     pricing: {
       title: "End-to-End Data Migration",
-      price: "£600–£850/day, or fixed price £8,000–£15,000 per domain",
+      price: "Scoped per project — indicative range £35,000–£90,000+ for a full programme",
       detail:
-        "Most engagements run 8–16 weeks alongside your D365 programme, scoped after a discovery call.",
+        "Fixed price or day rate (£650–£850/day depending on remote or on-site). Most engagements run 8–16 weeks alongside your D365 programme, scoped after a discovery call. Full detail on how-we-engage.",
       whatAffectsPrice: [
         "Number of data domains in scope",
         "Source system complexity and number of source systems",
@@ -104,7 +104,7 @@ export const SERVICES_CONTENT: ServiceContent[] = [
       {
         question: "Do you work day rate or fixed price?",
         answer:
-          "Either. Day rate suits programmes where scope is still firming up; fixed price per domain suits programmes that want cost certainty from the outset.",
+          "Either. Day rate (£650–£850/day) suits programmes where scope is still firming up; fixed price suits programmes that want cost certainty from the outset. Full detail on our How We Engage page.",
       },
     ],
     related: ["data-migration-health-check", "data-cleansing-enrichment", "data-migration-project-management"],
@@ -213,8 +213,8 @@ export const SERVICES_CONTENT: ServiceContent[] = [
     systems: ALL_SYSTEMS,
     pricing: {
       title: "Migration Rescue",
-      price: "Day rate, mobilised within 5 working days",
-      detail: "Scoped after an urgent diagnostic call — most rescues start within a week of first contact.",
+      price: "£850–£1,000 per day",
+      detail: "Mobilised typically within 5 working days of agreement. The premium rate reflects the complexity of entering a project mid-stream under pressure, not a different scope of work.",
       whatAffectsPrice: [
         "Severity of the current failure",
         "How much of the existing build can be salvaged",
@@ -271,8 +271,8 @@ export const SERVICES_CONTENT: ServiceContent[] = [
     systems: ALL_SYSTEMS,
     pricing: {
       title: "Post-Go-Live Retainer",
-      price: "From £1,500/month",
-      detail: "Sized to your post-go-live issue volume, reviewed monthly.",
+      price: "From £1,500/month (includes up to 3 days; additional days at standard day rate)",
+      detail: "Typically 3–6 months post go-live, then reviewed. Invoiced monthly in advance; either party may give 30 days' notice to end the arrangement.",
       whatAffectsPrice: [
         "Expected monthly hours",
         "Number of domains under support",
@@ -328,8 +328,8 @@ export const SERVICES_CONTENT: ServiceContent[] = [
     systems: ALL_SYSTEMS,
     pricing: {
       title: "Data Cleansing & Enrichment",
-      price: "£8,000–£15,000 per domain, or bundled into an End-to-End engagement",
-      detail: "Scoped against record volume and the number of domains needing cleansing.",
+      price: "Standard day rate (£650–£850/day), or bundled into an End-to-End engagement",
+      detail: "Scoped against record volume and the number of domains needing cleansing. See How We Engage for full day-rate detail.",
       whatAffectsPrice: ["Record volume per domain", "Number of domains", "Availability of reference/enrichment data"],
     },
     faqs: [
@@ -382,8 +382,8 @@ export const SERVICES_CONTENT: ServiceContent[] = [
     systems: ALL_SYSTEMS,
     pricing: {
       title: "Data Migration Project Management",
-      price: "Day rate, typically 2–3 days per week through the programme",
-      detail: "Scoped against programme length and cutover complexity.",
+      price: "£650–£850/day, typically 2–3 days per week through the programme",
+      detail: "Scoped against programme length and cutover complexity. See How We Engage for full day-rate detail.",
       whatAffectsPrice: ["Programme duration", "Number of mock cycles", "Number of workstreams to coordinate with"],
     },
     faqs: [
@@ -431,8 +431,8 @@ export const SERVICES_CONTENT: ServiceContent[] = [
     systems: ALL_SYSTEMS,
     pricing: {
       title: "Integration & Interface Services",
-      price: "Build: day rate. Ongoing maintenance: from £1,200/month per interface",
-      detail: "Scoped against interface count and data volume.",
+      price: "Build: £650–£850/day. Ongoing maintenance: scoped per interface",
+      detail: "Scoped against interface count and data volume. See How We Engage for full day-rate detail.",
       whatAffectsPrice: ["Number of interfaces", "Real-time vs batch requirements", "Data volume and frequency"],
     },
     faqs: [
@@ -478,8 +478,8 @@ export const SERVICES_CONTENT: ServiceContent[] = [
     systems: ALL_SYSTEMS,
     pricing: {
       title: "Data Governance & MDM",
-      price: "Fixed price from £6,000, scoped to domain count",
-      detail: "Typically a 4–6 week engagement after go-live.",
+      price: "Day rate (£650–£850/day) or fixed price, scoped to domain count",
+      detail: "Typically a 4–6 week engagement after go-live. See How We Engage for full day-rate detail.",
       whatAffectsPrice: ["Number of domains", "Number of stakeholder groups to align", "MDM tooling complexity"],
     },
     faqs: [
@@ -527,8 +527,8 @@ export const SERVICES_CONTENT: ServiceContent[] = [
     systems: ALL_SYSTEMS,
     pricing: {
       title: "Reconciliation Analytics",
-      price: "From £4,000, fixed",
-      detail: "Scoped against the number of domains and mock cycles to be reported on.",
+      price: "Day rate (£650–£850/day) or fixed price, scoped per engagement",
+      detail: "Scoped against the number of domains and mock cycles to be reported on. See How We Engage for full day-rate detail.",
       whatAffectsPrice: ["Number of domains", "Number of mock cycles", "Level of drill-down detail required"],
     },
     faqs: [

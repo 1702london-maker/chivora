@@ -1,35 +1,31 @@
+import { Eyebrow } from "@/components/ui/Eyebrow";
 import { FadeUp } from "@/components/motion/FadeUp";
 
-// Placeholder — director photo, name and quote are not yet supplied.
-// Replace with real attribution before launch. Do not invent a name or quote.
 export function AboutStrip() {
   return (
-    <section className="mx-auto max-w-7xl px-6 py-[var(--section-y)]">
-      <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
-        <FadeUp fromX={-32}>
-          <div className="relative aspect-[4/5] w-full max-w-sm overflow-hidden rounded-[var(--radius-card)] border-2 border-blue bg-gradient-to-br from-ink to-navy">
-            <div className="flex h-full items-center justify-center">
-              <span className="font-mono-chivora text-xs tracking-[0.08em] text-white/40 uppercase">
-                Director photo placeholder
-              </span>
-            </div>
-          </div>
-        </FadeUp>
-
-        <FadeUp fromX={32}>
-          <span className="font-display block text-6xl leading-none text-blue">
-            &quot;
-          </span>
-          <p className="font-display -mt-4 text-[var(--text-h3)] font-medium text-ink">
-            [Quote placeholder — awaiting director sign-off. We only do data
-            migration. Not configuration, not project rescue theatre, not
-            general IT. That focus is the whole point.]
-          </p>
-          <p className="font-mono-chivora mt-4 text-xs tracking-[0.08em] text-ink-mute uppercase">
-            Director, Chivora — name pending
-          </p>
-        </FadeUp>
-      </div>
+    <section className="mx-auto max-w-3xl px-6 py-[var(--section-y)] text-center">
+      <FadeUp>
+        <Eyebrow>Why Chivora Exists — In The Founder&apos;s Own Words</Eyebrow>
+        <span className="font-display mt-4 block text-6xl leading-none text-blue">
+          &quot;
+        </span>
+        <p className="font-display -mt-2 text-[var(--text-h3)] font-medium text-ink">
+          Most D365 implementations treat data migration as a box to tick. It
+          gets handed to a functional consultant with twelve other
+          responsibilities, no dedicated tooling, and no clear sign-off
+          process. That&apos;s why it&apos;s the most common reason go-lives
+          slip, cost overruns happen, and post-live reconciliation becomes a
+          six-month headache. I built Chivora because that problem is
+          entirely preventable — if someone owns it properly from day one.
+          We are that someone.
+        </p>
+        <p className="font-mono-chivora mt-5 text-xs tracking-[0.08em] text-ink-mute uppercase">
+          Sunday Ukwungwu — Founder &amp; Director, Chivora
+        </p>
+        <p className="mt-1 text-xs text-ink-mute">
+          Trading name of Nwoye Concepts Ltd, registered in England &amp; Wales
+        </p>
+      </FadeUp>
     </section>
   );
 }

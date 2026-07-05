@@ -6,9 +6,9 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { FadeUp } from "@/components/motion/FadeUp";
 import { CASE_METRICS } from "@/lib/constants";
 
-// NOTE: CASE_METRICS in lib/constants.ts are illustrative examples only —
-// Chivora has no published client case studies yet. Replace with real,
-// permissioned client data before this section goes live.
+// NOTE: CASE_METRICS in lib/constants.ts are modelled examples, not named
+// client engagements — see the reframed disclosure copy below. Replace with
+// real, permissioned client data as it becomes available.
 export function CaseMetrics() {
   return (
     <section className="py-[var(--section-y)]">
@@ -18,8 +18,14 @@ export function CaseMetrics() {
           <h2 className="font-display mt-3 text-[var(--text-h2)] font-bold tracking-[-0.02em] text-ink">
             Migrations that landed.
           </h2>
-          <p className="mt-2 font-mono-chivora text-xs tracking-[0.08em] text-ink-mute uppercase">
-            Illustrative examples — not real client data
+          <p className="mt-2 max-w-[62ch] text-sm text-ink-soft">
+            The following examples are modelled on the types of migration
+            challenges Chivora&apos;s team has encountered across ERP
+            transformation programmes — including SAP and Microsoft Dynamics
+            NAV source systems. Client names and specific identifying
+            details have been removed. The data volumes, domain complexity,
+            and outcomes reflect the scale of work we&apos;re built to
+            deliver.
           </p>
         </FadeUp>
       </div>
@@ -47,6 +53,10 @@ export function CaseMetrics() {
                 </span>
               ))}
             </div>
+            <p className="mt-4 border-t border-line pt-3 text-[11px] leading-snug text-ink-mute">
+              Anonymised delivery example — scope and complexity based on
+              real programme experience.
+            </p>
           </div>
         ))}
 

@@ -74,6 +74,9 @@ export const DATA_DOMAINS = [
   { code: "FA", name: "Fixed Assets", description: "Asset register, depreciation profiles, net book values." },
   { code: "CUST", name: "Customers", description: "Customer master data and hierarchies." },
   { code: "VEND", name: "Vendors", description: "Vendor master data and banking details." },
+  { code: "HR", name: "HR", description: "Employee master data, org structure, payroll-relevant fields." },
+  { code: "OSO", name: "Open Sales Order", description: "Open sales orders and outstanding fulfilment commitments." },
+  { code: "OPO", name: "Open Purchase Order", description: "Open purchase orders and outstanding receipt commitments." },
 ] as const;
 
 export const METHODOLOGY_PHASES = [
@@ -171,24 +174,6 @@ export const CASE_METRICS = [
     stat: "2.4M",
     statLabel: "records migrated",
     subStats: ["100% INVENTORY RECONCILIATION", "0 DAYS SLIPPED", "3 MOCK CYCLES"],
-  },
-] as const;
-
-export const INSIGHTS_DRAFTS = [
-  {
-    title: "Why data migration fails on D365 projects",
-    excerpt: "The most common causes, and how to catch them before cutover.",
-    date: "DRAFT",
-  },
-  {
-    title: "DMF vs KingswaySoft vs Scribe",
-    excerpt: "Choosing the right migration tooling for your source system.",
-    date: "DRAFT",
-  },
-  {
-    title: "Migrating open AR/AP transactions: lessons learned",
-    excerpt: "Why open items are the hardest part of any ledger migration.",
-    date: "DRAFT",
   },
 ] as const;
 

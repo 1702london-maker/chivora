@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/Button";
 
 const NAV_LINKS = [
   { label: "Services", dropdown: "services" as const },
+  { label: "How We Engage", href: "/how-we-engage" },
   { label: "Source Systems", dropdown: "source-systems" as const },
   { label: "Methodology", href: "/methodology" },
   { label: "Case Studies", href: "/case-studies" },
@@ -155,9 +156,12 @@ export function Nav() {
           </div>
 
           <div className="hidden items-center gap-6 lg:flex">
-            <span className="font-mono-chivora text-sm text-ink-mute">
-              +44 20 0000 0000
-            </span>
+            <a
+              href="tel:+447918554877"
+              className="font-mono-chivora text-sm text-ink-mute transition-colors hover:text-blue"
+            >
+              +44 7918 554877
+            </a>
             <Button href="/contact" className="!px-5 !py-2.5 text-sm">
               Book a discovery call
             </Button>

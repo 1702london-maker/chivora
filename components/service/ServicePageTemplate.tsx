@@ -241,6 +241,12 @@ export function ServicePageTemplate({ service }: { service: ServiceContent }) {
                 Start with a Health Check
               </Button>
             </div>
+            <Link
+              href="/how-we-engage"
+              className="mt-6 inline-block text-sm text-white/60 underline-offset-4 hover:text-white hover:underline"
+            >
+              See pricing &amp; engagement models →
+            </Link>
           </div>
         </section>
       </main>

@@ -2,35 +2,69 @@ export interface InsightArticle {
   slug: string;
   title: string;
   category: "Technical" | "Strategy" | "Case Study";
-  date: string;
+  published: boolean;
   readTime: string;
   excerpt: string;
   body: string[];
-  pullQuote?: string;
+  pullQuote?: { text: string; attribution: string };
+  author?: string;
 }
 
-// Draft content — for review before publishing.
 export const INSIGHTS: InsightArticle[] = [
   {
     slug: "why-data-migration-fails-on-d365-projects",
-    title: "Why data migration fails on D365 projects",
+    title: "Why Data Migration Fails on D365 Projects — And What To Do About It",
     category: "Strategy",
-    date: "DRAFT",
-    readTime: "6 min read",
-    excerpt: "The most common causes, and how to catch them before cutover.",
+    published: true,
+    readTime: "8 min read",
+    author: "Sunday Ukwungwu, Founder & Director — Chivora",
+    excerpt:
+      "It is the most predictable failure mode in D365 delivery — and it almost always traces back to the same root cause: data migration was treated as a task rather than a discipline.",
     body: [
-      "Data migration is consistently one of the highest-risk workstreams on a D365 implementation, and it fails in predictable ways. The first and most common cause is ownership: migration gets assigned to a functional consultant as one task among many, rather than run as its own workstream with a dedicated owner accountable for it.",
-      "The second cause is timing. Data quality issues that should surface during discovery instead surface for the first time at the first mock migration — by which point the cutover plan has already been built around an assumption that the data was clean.",
-      "The third, and often the most damaging, is reconciliation discipline. Balances are checked at a summary level rather than transaction level, so discrepancies hide until go-live, when they surface as live production problems instead of test findings.",
-      "None of these are inevitable. Treating data migration as its own workstream, profiling data quality honestly at the start, and reconciling at transaction level through every mock cycle removes most of the risk before it becomes a go-live problem.",
+      "If you have been part of a Microsoft Dynamics 365 implementation — as a programme manager, a finance director, a project sponsor, or a systems integrator — you have almost certainly seen it happen. The functional workstreams are tracking green. The configuration is done. The training sessions are booked. And then, three weeks before go-live, someone opens the migrated data in D365 and the numbers don't reconcile.",
+      "This is not bad luck. It is not an edge case. It is the most predictable failure mode in D365 delivery — and it almost always traces back to the same root cause: data migration was treated as a task rather than a discipline.",
+      "## The Pattern We See, Project After Project",
+      "Data migration tends to be scoped as a line item on the project plan rather than a dedicated workstream with its own resource, methodology, and sign-off process. It gets assigned to a functional consultant who already owns the GL design, or an IT analyst who is also managing the infrastructure cutover, or — most commonly — a business analyst who knows the source system well but has never loaded data into D365 at volume.",
+      "The result is predictable. Mapping decisions get made ad hoc. Cleansing happens inconsistently across domains. The first real load into D365 happens four weeks before go-live, when there is no longer enough runway to fix what is wrong. And the business goes live with data it does not fully trust.",
+      "## The Six Reasons D365 Data Migration Fails",
+      "### 1. Discovery is skipped or compressed",
+      "Before a single record moves, someone needs to understand the source data in detail — not at a high level, but at the field level. What does the customer master actually contain? Are the GL account codes consistent across legal entities? How clean is the open AR? How many item records are duplicated or inactive?",
+      "When discovery is skipped — usually because the project timeline doesn't budget for it — the problems surface during testing, when fixing them is expensive. Or worse, at cutover, when fixing them is not possible.",
+      "### 2. Data quality problems are treated as the migration team's problem",
+      "Data migration specialists can identify data quality issues, document them, and define what needs to be fixed. We cannot fix them on your behalf — because the decisions required (should this duplicate customer record be merged or deleted? should this historical transaction be carried forward or written off?) are business decisions, not technical ones.",
+      "Projects that go wrong almost always have one thing in common: the business was not engaged in data cleansing early enough. By the time the quality problems surface, the people who own the data — the finance team, the warehouse manager, the credit controller — are already in UAT and have no bandwidth to go back.",
+      "### 3. The mapping is done once and never revisited",
+      "A data mapping document written in month two of a project is a snapshot of what the functional design looked like in month two. D365 configurations change. Business requirements shift. New entities are added. If the mapping document is not maintained in sync with those changes, the migration build will be loading data into a target that no longer matches the design it was built against.",
+      "### 4. Testing is treated as a one-time event",
+      "A single migration test run — even if it passes — is not enough. A robust migration programme runs at least two full mock migrations before cutover: the first to find the problems, the second to prove the fixes worked and to rehearse the cutover timing. Projects that skip the second mock run regularly discover at cutover that the fix introduced a new problem.",
+      "### 5. Reconciliation is not defined in advance",
+      "How will you know when the migration has succeeded? This sounds like an obvious question, but on the majority of projects we encounter, there is no pre-agreed reconciliation framework — no defined tolerance, no sign-off checklist, no named person with the authority to say ‘the data is good enough to go live.’",
+      "Without that framework, the cutover decision becomes subjective. And subjective decisions under go-live pressure almost always go in the same direction: the business goes live with data it is not confident in, and spends the next three months firefighting.",
+      "### 6. Nobody owns it end to end",
+      "This is the root cause underneath all the others. Data migration done well requires a single, accountable owner who is present from discovery through to post-go-live stabilisation — someone whose only job on the project is to ensure that data moves correctly. When that ownership is distributed across multiple people with competing priorities, decisions fall through the gaps.",
+      "## What Good Looks Like",
+      "A well-run D365 data migration has the following characteristics, regardless of the size or complexity of the programme:",
+      "A dedicated data migration resource — not a shared responsibility — present from kick-off. A data discovery phase completed before mapping begins, with a written assessment of data quality by domain. A source-to-target mapping document that is version-controlled and updated every time the D365 configuration changes. Business-owned data cleansing, with clear accountability and a defined completion date before migration build begins. Two full mock migration runs — the first to find issues, the second to prove them fixed. A pre-agreed reconciliation framework with defined tolerances and a named sign-off authority. A cutover plan rehearsed in mock migration 2, including rollback triggers and escalation paths. A post-go-live stabilisation period with named support resource for the first four to six weeks.",
+      "None of these are complicated. None of them require technology you don't already have. They require discipline, dedicated ownership, and a methodology that has been applied enough times to know where the problems hide.",
+      "## A Note on Source Systems",
+      "The failure patterns above apply to every D365 migration regardless of source system — but each legacy ERP introduces its own specific complexity. SAP's BSEG clearing document structure creates open-item reconciliation challenges that catch teams off guard. Microsoft Dynamics NAV's dimension framework maps differently to D365 financial dimensions than most people expect. SAGE's multi-company structures require careful entity mapping decisions before a single record is touched.",
+      "Understanding those source-system-specific risks in advance — before the mapping document is written — is the difference between a migration that surfaces problems in discovery and one that surfaces them at cutover.",
+      "## What This Means If You're Planning a D365 Migration Now",
+      "If your programme starts in the next 3 months: commission a Data Migration Health Check before your SI partner begins the functional design. Understanding the state of your source data now changes the scoping conversation, the timeline, and the risk profile of the entire programme. It costs a fraction of a go-live delay.",
+      "If your migration is already in flight: ask your project manager two questions. Who specifically owns the data migration workstream, and what does the reconciliation framework look like? If neither question has a clear answer, that is the thing to fix before anything else.",
+      "If your go-live is within 8 weeks and data is a concern: a migration rescue engagement can be mobilised within five working days. The sooner it starts, the more options exist.",
+      "Chivora works exclusively on D365 data migration — nothing else. If you'd like to talk through where your programme stands, book a 20-minute discovery call. No sales pitch. Honest answers about what's achievable and how we'd approach it.",
     ],
-    pullQuote: "Data migration fails for the same three reasons, on almost every project.",
+    pullQuote: {
+      text: "Data migration is not a task you assign. It is a discipline you resource.",
+      attribution: "Sunday Ukwungwu, Founder — Chivora",
+    },
   },
   {
     slug: "dmf-vs-kingswaysoft-vs-scribe",
     title: "DMF vs KingswaySoft vs Scribe",
     category: "Technical",
-    date: "DRAFT",
+    published: false,
     readTime: "7 min read",
     excerpt: "Choosing the right migration tooling for your source system.",
     body: [
@@ -44,7 +78,7 @@ export const INSIGHTS: InsightArticle[] = [
     slug: "migrating-open-ar-ap-transactions-lessons-learned",
     title: "Migrating open AR/AP transactions: lessons learned",
     category: "Technical",
-    date: "DRAFT",
+    published: false,
     readTime: "5 min read",
     excerpt: "Why open items are the hardest part of any ledger migration.",
     body: [
@@ -57,4 +91,8 @@ export const INSIGHTS: InsightArticle[] = [
 
 export function getInsightBySlug(slug: string) {
   return INSIGHTS.find((a) => a.slug === slug);
+}
+
+export function getPublishedInsights() {
+  return INSIGHTS.filter((a) => a.published);
 }

@@ -8,12 +8,12 @@ import { CASE_STUDIES } from "@/lib/content/caseStudies";
 
 export const metadata: Metadata = {
   title: "Case Studies | Chivora — D365 Data Migration Specialists",
-  description: "Illustrative examples of D365 data migrations, by sector and source system.",
+  description: "Representative D365 migration scope, modelled on real delivery experience.",
 };
 
-// NOTE: CASE_STUDIES in lib/content/caseStudies.ts are illustrative
-// placeholders, not real client engagements. Replace with real,
-// permissioned data before this page is presented as fact.
+// NOTE: CASE_STUDIES in lib/content/caseStudies.ts are modelled examples,
+// not named client engagements. Replace with real, permissioned data as it
+// becomes available.
 export default function CaseStudiesPage() {
   return (
     <>
@@ -25,8 +25,14 @@ export default function CaseStudiesPage() {
             <h1 className="font-display mt-3 text-[var(--text-display)] font-bold tracking-[-0.03em] text-ink">
               Migrations that landed.
             </h1>
-            <p className="mt-4 font-mono-chivora text-xs tracking-[0.08em] text-ink-mute uppercase">
-              Illustrative examples — not real client data
+            <p className="mt-4 max-w-[62ch] mx-auto text-sm text-ink-soft">
+              The following examples are modelled on the types of migration
+              challenges Chivora&apos;s team has encountered across ERP
+              transformation programmes — including SAP and Microsoft
+              Dynamics NAV source systems. Client names and specific
+              identifying details have been removed. The data volumes,
+              domain complexity, and outcomes reflect the scale of work
+              we&apos;re built to deliver.
             </p>
           </FadeUp>
         </section>
@@ -69,6 +75,11 @@ export default function CaseStudiesPage() {
                       · {c.timeline}
                     </span>
                   </div>
+
+                  <p className="mt-4 text-[11px] leading-snug text-ink-mute">
+                    Anonymised delivery example — scope and complexity based
+                    on real programme experience.
+                  </p>
                 </div>
               </FadeUp>
             ))}
