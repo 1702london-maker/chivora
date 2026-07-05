@@ -17,6 +17,9 @@ export function Footer() {
               Specialist Dynamics 365 data migration. Cleanly. Completely. On
               time.
             </p>
+            <p className="mt-3 font-mono-chivora text-[10px] tracking-[0.08em] text-ink-mute uppercase">
+              Chivora — Registered in England &amp; Wales · All prices exclude VAT
+            </p>
             <Link
               href="https://www.linkedin.com/in/sunday-ukwungwu-0bb642161"
               className="group mt-6 inline-flex items-center gap-2 text-sm text-ink-soft transition-colors hover:text-blue"
@@ -94,9 +97,22 @@ export function Footer() {
       </div>
 
       <div className="border-t-[1px] border-blue">
-        <p className="font-mono-chivora mx-auto max-w-7xl px-6 py-5 text-[0.6875rem] tracking-[0.08em] text-ink-mute uppercase">
-          Chivora — Registered in England &amp; Wales · All prices exclude VAT
-        </p>
+        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-6 py-5 sm:flex-row sm:items-center sm:justify-between">
+          <p className="font-mono-chivora text-[0.6875rem] tracking-[0.08em] text-ink-mute uppercase">
+            @chivora
+          </p>
+          <div className="font-mono-chivora flex gap-4 text-[0.6875rem] tracking-[0.08em] text-ink-mute uppercase">
+            <Link href="/privacy" className="hover:text-blue">
+              Privacy
+            </Link>
+            <Link href="/cookies" className="hover:text-blue">
+              Cookies
+            </Link>
+            <Link href="/terms" className="hover:text-blue">
+              Terms
+            </Link>
+          </div>
+        </div>
       </div>
     </footer>
   );

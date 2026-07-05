@@ -4,6 +4,8 @@ import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { FadeUp } from "@/components/motion/FadeUp";
+import { InnerHero } from "@/components/hero/InnerHero";
+import { EngagementTicker } from "@/components/hero/animations/EngagementTicker";
 import { TodoChip } from "@/components/ui/TodoChip";
 import { Check } from "lucide-react";
 
@@ -57,27 +59,15 @@ export default function HowWeEngagePage() {
     <>
       <Nav />
       <main className="flex-1">
-        <section className="mx-auto max-w-3xl px-6 pt-16 pb-8">
-          <FadeUp>
-            <Eyebrow>Engagement</Eyebrow>
-            <h1 className="font-display mt-3 text-[var(--text-display)] font-bold tracking-[-0.03em] text-ink">
-              How We Engage
-            </h1>
-            <p className="mt-4 text-ink-soft">
-              Chivora works with Microsoft Partners, systems integrators, and
-              end-user organisations on D365 data migration. This page
-              explains how engagements are structured, how we price our
-              work, and what you can expect from the commercial process.
-            </p>
-            <p className="mt-4 text-ink-soft">
-              We are direct about pricing because ambiguity wastes
-              everyone&apos;s time. The figures below are real — not ranges
-              designed to get you on a call. If your engagement falls
-              outside these parameters, we&apos;ll tell you that clearly at
-              the discovery stage.
-            </p>
-          </FadeUp>
-        </section>
+        <InnerHero
+          breadcrumb={[{ label: "How We Engage", href: "/how-we-engage" }]}
+          eyebrow="Engagement"
+          title="How We Engage"
+          subline="Chivora works with Microsoft Partners, systems integrators, and end-user organisations on D365 data migration. We are direct about pricing because ambiguity wastes everyone's time — the figures on this page are real, not ranges designed to get you on a call."
+          primaryCta={{ label: "Book a discovery call", href: "/contact" }}
+          secondaryCta={{ label: "See our services", href: "/services" }}
+          visual={<EngagementTicker />}
+        />
 
         {/* Who we work with */}
         <section className="mx-auto max-w-6xl px-6 py-[var(--section-y)]">

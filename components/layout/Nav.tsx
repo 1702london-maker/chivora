@@ -10,13 +10,13 @@ import { SOURCE_SYSTEMS_CONTENT } from "@/lib/content/sourceSystems";
 import { Button } from "@/components/ui/Button";
 
 const NAV_LINKS = [
+  { label: "About", href: "/about" },
   { label: "Services", dropdown: "services" as const },
-  { label: "How We Engage", href: "/how-we-engage" },
   { label: "Source Systems", dropdown: "source-systems" as const },
+  { label: "How We Engage", href: "/how-we-engage" },
   { label: "Methodology", href: "/methodology" },
   { label: "Case Studies", href: "/case-studies" },
   { label: "Insights", href: "/insights" },
-  { label: "About", href: "/about" },
 ];
 
 export function Nav() {

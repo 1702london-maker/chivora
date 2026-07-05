@@ -4,6 +4,8 @@ import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { FadeUp } from "@/components/motion/FadeUp";
+import { InnerHero } from "@/components/hero/InnerHero";
+import { IdentityFocus } from "@/components/hero/animations/IdentityFocus";
 import { ToolsRow } from "@/components/home/ToolsRow";
 import { TodoChip } from "@/components/ui/TodoChip";
 import { Check, X } from "lucide-react";
@@ -34,21 +36,15 @@ export default function AboutPage() {
     <>
       <Nav />
       <main className="flex-1">
-        <section className="mx-auto max-w-3xl px-6 pt-16 pb-8 text-center">
-          <FadeUp>
-            <Eyebrow>About</Eyebrow>
-            <h1 className="font-display mt-3 text-[var(--text-display)] font-bold tracking-[-0.03em] text-ink">
-              We only do one thing.
-            </h1>
-            <p className="mt-4 text-ink-soft">
-              Chivora specialises exclusively in Microsoft Dynamics 365 data
-              migration — moving critical business data from SAP, Oracle,
-              Sage, NAV, BPCS, IFS and Access Dimensions into D365 F&amp;O and
-              CE. Not configuration. Not general IT. Not implementation
-              project management. Data migration, and nothing else.
-            </p>
-          </FadeUp>
-        </section>
+        <InnerHero
+          breadcrumb={[{ label: "About", href: "/about" }]}
+          eyebrow="About"
+          title="We only do one thing."
+          subline="Chivora specialises exclusively in Microsoft Dynamics 365 data migration — moving critical business data from SAP, Oracle, Sage, NAV, BPCS, IFS and Access Dimensions into D365 F&O and CE. Not configuration. Not general IT. Not implementation project management. Data migration, and nothing else."
+          primaryCta={{ label: "Book a discovery call", href: "/contact" }}
+          secondaryCta={{ label: "See the methodology", href: "/methodology" }}
+          visual={<IdentityFocus />}
+        />
 
         {/* Founder bio — text stands alone until a real headshot is added */}
         <section className="mx-auto max-w-4xl px-6 py-[var(--section-y)]">
@@ -125,18 +121,14 @@ export default function AboutPage() {
                 <li>Source systems: Microsoft Dynamics NAV, SAP (ECC), SAGE, BPCS, IFS, Access Dimensions</li>
                 <li>Domains: GL, AR, AP, Inventory, Fixed Assets, Customers, Vendors — full coverage</li>
                 <li>Tools: DIXF / Data Management Framework, KingswaySoft, SQL Server, Excel / Power Query, Power BI</li>
-                <li>
-                  <TodoChip>Microsoft certifications — to be added if held (e.g. MB-300, MB-700, DP-900)</TodoChip>
-                </li>
-                <li>Nwoye Concepts Ltd — registered in England and Wales, Company No. 9776455</li>
               </ul>
             </div>
 
-            <div className="mt-10">
+            <div className="mt-6">
               <p className="font-mono-chivora text-xs tracking-[0.08em] text-blue uppercase">
                 How I Work
               </p>
-              <p className="mt-4 text-sm leading-[1.7] text-ink-soft">
+              <p className="mt-3 text-sm leading-[1.7] text-ink-soft">
                 Chivora takes on a small number of engagements at a time —
                 by design. Every client gets my direct involvement from the
                 first discovery conversation through to post-go-live
@@ -144,7 +136,7 @@ export default function AboutPage() {
                 handoffs, and no situations where the person who scoped the
                 work is not the person delivering it.
               </p>
-              <p className="mt-4 text-sm leading-[1.7] text-ink-soft">
+              <p className="mt-3 text-sm leading-[1.7] text-ink-soft">
                 I work remotely as standard, with on-site attendance for key
                 workshops, mock migration reviews, and cutover. I am based
                 in the UK and available for programmes across the UK and,

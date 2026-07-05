@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/Button";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { FadeUp } from "@/components/motion/FadeUp";
+import { InnerHero } from "@/components/hero/InnerHero";
+import { CaseStatCarousel } from "@/components/hero/animations/CaseStatCarousel";
 import { CASE_STUDIES } from "@/lib/content/caseStudies";
 
 export const metadata: Metadata = {
@@ -19,23 +20,15 @@ export default function CaseStudiesPage() {
     <>
       <Nav />
       <main className="flex-1">
-        <section className="mx-auto max-w-3xl px-6 pt-16 pb-4 text-center">
-          <FadeUp>
-            <Eyebrow>Case Studies</Eyebrow>
-            <h1 className="font-display mt-3 text-[var(--text-display)] font-bold tracking-[-0.03em] text-ink">
-              Migrations that landed.
-            </h1>
-            <p className="mt-4 max-w-[62ch] mx-auto text-sm text-ink-soft">
-              The following examples are modelled on the types of migration
-              challenges Chivora&apos;s team has encountered across ERP
-              transformation programmes — including SAP and Microsoft
-              Dynamics NAV source systems. Client names and specific
-              identifying details have been removed. The data volumes,
-              domain complexity, and outcomes reflect the scale of work
-              we&apos;re built to deliver.
-            </p>
-          </FadeUp>
-        </section>
+        <InnerHero
+          breadcrumb={[{ label: "Case Studies", href: "/case-studies" }]}
+          eyebrow="Case Studies"
+          title="Migrations that landed."
+          subline="The following examples are modelled on the types of migration challenges Chivora's team has encountered across ERP transformation programmes — including SAP and Microsoft Dynamics NAV source systems. Client names and specific identifying details have been removed."
+          primaryCta={{ label: "Book a discovery call", href: "/contact" }}
+          secondaryCta={{ label: "See our services", href: "/services" }}
+          visual={<CaseStatCarousel />}
+        />
 
         <section className="mx-auto max-w-6xl px-6 py-[var(--section-y)]">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">

@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { FadeUp } from "@/components/motion/FadeUp";
+import { InnerHero } from "@/components/hero/InnerHero";
+import { ArticleWrite } from "@/components/hero/animations/ArticleWrite";
 import { getPublishedInsights } from "@/lib/content/insights";
 
 export const metadata: Metadata = {
@@ -18,14 +19,15 @@ export default function InsightsIndexPage() {
     <>
       <Nav />
       <main className="flex-1">
-        <section className="mx-auto max-w-3xl px-6 pt-16 pb-4 text-center">
-          <FadeUp>
-            <Eyebrow>Insights</Eyebrow>
-            <h1 className="font-display mt-3 text-[var(--text-display)] font-bold tracking-[-0.03em] text-ink">
-              Latest thinking.
-            </h1>
-          </FadeUp>
-        </section>
+        <InnerHero
+          breadcrumb={[{ label: "Insights", href: "/insights" }]}
+          eyebrow="Insights"
+          title="Latest thinking."
+          subline="Technical and strategic writing on D365 data migration — from the specific quirks of individual source systems to the discipline that keeps a migration on track."
+          primaryCta={{ label: "Book a discovery call", href: "/contact" }}
+          secondaryCta={{ label: "See the methodology", href: "/methodology" }}
+          visual={<ArticleWrite />}
+        />
 
         <section className="mx-auto max-w-6xl px-6 py-[var(--section-y)]">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
