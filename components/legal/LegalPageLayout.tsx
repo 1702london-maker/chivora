@@ -23,7 +23,7 @@ export function LegalPageLayout({
           <div className="mt-4 rounded-lg border border-dashed border-line bg-gray-50 px-4 py-3 text-sm text-ink-mute">
             This page is a placeholder pending formal legal review. Nothing
             below should be treated as a final, binding policy until
-            confirmed by Chivora / Nwoye Concepts Ltd.
+            confirmed by Chivora.
           </div>
           <div className="mt-8 flex flex-col gap-5 text-sm leading-[1.7] text-ink-soft">
             {children}

@@ -23,7 +23,7 @@ export function AboutStrip() {
           Sunday Ukwungwu — Founder &amp; Director, Chivora
         </p>
         <p className="mt-1 text-xs text-ink-mute">
-          Trading name of Nwoye Concepts Ltd, registered in England &amp; Wales
+          Registered in England &amp; Wales
         </p>
       </FadeUp>
     </section>

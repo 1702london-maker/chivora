@@ -10,8 +10,8 @@ export default function TermsPage() {
   return (
     <LegalPageLayout eyebrow="Legal" title="Terms & Conditions">
       <p>
-        This website is operated by Nwoye Concepts Ltd, trading as Chivora,
-        registered in England &amp; Wales.
+        This website is operated by Chivora, registered in England &amp;
+        Wales.
       </p>
       <p>
         Engagement-specific terms (Statement of Work, day-rate agreement,

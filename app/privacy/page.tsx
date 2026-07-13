@@ -10,7 +10,7 @@ export default function PrivacyPage() {
   return (
     <LegalPageLayout eyebrow="Legal" title="Privacy Policy">
       <p>
-        Chivora (trading name of Nwoye Concepts Ltd) collects personal data
+        Chivora collects personal data
         submitted through this site&apos;s forms — including contact
         details, company information, and project context — solely to
         respond to enquiries and deliver requested services.

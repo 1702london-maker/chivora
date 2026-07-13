@@ -230,11 +230,9 @@ export default function HowWeEngagePage() {
             </h2>
             <p className="mt-4 text-sm leading-[1.7] text-ink-soft">
               Chivora engagements are structured as business-to-business
-              contracts between your organisation and Nwoye Concepts Ltd
-              (the registered company trading as Chivora). We do not operate
-              inside IR35 arrangements. Our standard contracts include a
-              right of substitution and are structured to reflect genuine
-              outside-IR35 working practices.
+              contracts. We do not operate inside IR35 arrangements. Our
+              standard contracts include a right of substitution and are
+              structured to reflect genuine outside-IR35 working practices.
             </p>
             <p className="mt-4 text-sm leading-[1.7] text-ink-soft">
               If your procurement process requires an IR35 determination, we
@@ -248,8 +246,8 @@ export default function HowWeEngagePage() {
               <span className="slash">// </span>Insurance
             </p>
             <p className="mt-3 text-sm leading-[1.7] text-ink-soft">
-              Nwoye Concepts Ltd holds the following insurance and will
-              provide certificates on request:
+              Chivora holds the following insurance and will provide
+              certificates on request:
             </p>
             <ul className="mt-4 flex flex-col gap-2 text-sm text-ink-soft">
               <li>Professional Indemnity Insurance: £1,000,000 cover — Hiscox UK</li>
