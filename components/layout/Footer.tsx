@@ -99,7 +99,7 @@ export function Footer() {
       <div className="border-t-[1px] border-blue">
         <div className="mx-auto flex max-w-7xl flex-col gap-2 px-6 py-5 sm:flex-row sm:items-center sm:justify-between">
           <p className="font-mono-chivora text-[0.6875rem] tracking-[0.08em] text-ink-mute uppercase">
-            @chivora
+            @chivora 2026
           </p>
           <div className="font-mono-chivora flex gap-4 text-[0.6875rem] tracking-[0.08em] text-ink-mute uppercase">
             <Link href="/privacy" className="hover:text-blue">
