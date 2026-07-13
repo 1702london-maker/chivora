@@ -59,8 +59,8 @@ export default function Home() {
                 </div>
                 <p className="mt-3 text-sm text-ink-mute">
                   Or call{" "}
-                  <a href="tel:+447918554877" className="hover:text-blue">
-                    +44 7918 554877
+                  <a href="tel:+441514534230" className="hover:text-blue">
+                    +44 151 453 4230
                   </a>
                 </p>
               </FadeUp>
