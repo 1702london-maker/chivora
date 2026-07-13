@@ -1,5 +1,5 @@
 {
-  "description": "Chivora IVR - welcome message + 3-option menu (new enquiry / partner-SI / existing client) with voicemail capture",
+  "description": "Chivora IVR - welcome message + 3-option menu (new enquiry / partner-SI / existing client), live call forwarding with voicemail fallback",
   "states": [
     {
       "name": "Trigger",
@@ -38,21 +38,21 @@
         { "event": "noMatch", "next": "invalid_option" },
         {
           "event": "match",
-          "next": "voicemail_enquiry",
+          "next": "connecting_enquiry",
           "conditions": [
             { "friendly_name": "If value equal_to 1", "type": "equal_to", "value": "1", "arguments": ["{{widgets.gather_menu.Digits}}"] }
           ]
         },
         {
           "event": "match",
-          "next": "voicemail_partner",
+          "next": "connecting_partner",
           "conditions": [
             { "friendly_name": "If value equal_to 2", "type": "equal_to", "value": "2", "arguments": ["{{widgets.gather_menu.Digits}}"] }
           ]
         },
         {
           "event": "match",
-          "next": "voicemail_client",
+          "next": "connecting_client",
           "conditions": [
             { "friendly_name": "If value equal_to 3", "type": "equal_to", "value": "3", "arguments": ["{{widgets.gather_menu.Digits}}"] }
           ]
@@ -70,9 +70,55 @@
         { "event": "audioComplete", "next": "voicemail_general" }
       ],
       "properties": {
-        "offset": { "x": -300, "y": 600 },
+        "offset": { "x": -400, "y": 600 },
         "say": "Sorry, I didn't get a valid option. Let me take a message instead.",
         "voice": "Polly.Amy-Neural"
+      }
+    },
+
+    {
+      "name": "connecting_enquiry",
+      "type": "say-play",
+      "transitions": [
+        { "event": "audioComplete", "next": "dial_enquiry" }
+      ],
+      "properties": {
+        "offset": { "x": 100, "y": 600 },
+        "say": "Connecting you now. Please hold.",
+        "voice": "Polly.Amy-Neural"
+      }
+    },
+    {
+      "name": "dial_enquiry",
+      "type": "connect-call-to",
+      "transitions": [
+        { "event": "callCompleted", "next": "check_enquiry" },
+        { "event": "hangup", "next": "goodbye" }
+      ],
+      "properties": {
+        "offset": { "x": 100, "y": 750 },
+        "noun": "number",
+        "to": "+447918554877",
+        "caller_id": "{{flow.channel.address}}",
+        "timeout": "60"
+      }
+    },
+    {
+      "name": "check_enquiry",
+      "type": "split-based-on",
+      "transitions": [
+        { "event": "noMatch", "next": "voicemail_enquiry" },
+        {
+          "event": "match",
+          "next": "goodbye",
+          "conditions": [
+            { "friendly_name": "If value equal_to completed", "type": "equal_to", "value": "completed", "arguments": ["{{widgets.dial_enquiry.DialCallStatus}}"] }
+          ]
+        }
+      ],
+      "properties": {
+        "offset": { "x": 100, "y": 900 },
+        "input": "{{widgets.dial_enquiry.DialCallStatus}}"
       }
     },
     {
@@ -82,8 +128,8 @@
         { "event": "audioComplete", "next": "record_enquiry" }
       ],
       "properties": {
-        "offset": { "x": 200, "y": 600 },
-        "say": "Thanks for calling about your D 3 6 5 migration. After the tone, please leave your name, company, source system, and the best number to reach you. Sunday will call you back within one business day.",
+        "offset": { "x": 100, "y": 1050 },
+        "say": "Sorry we missed you. After the tone, please leave your name, company, source system, and the best number to reach you. Sunday will call you back within one business day.",
         "voice": "Polly.Amy-Neural"
       }
     },
@@ -96,12 +142,58 @@
         { "event": "hangup", "next": "goodbye" }
       ],
       "properties": {
-        "offset": { "x": 200, "y": 800 },
+        "offset": { "x": 100, "y": 1200 },
         "play_beep": "true",
         "transcribe": true,
         "max_length": "120",
         "silence_timeout": "5",
         "trim": "true"
+      }
+    },
+
+    {
+      "name": "connecting_partner",
+      "type": "say-play",
+      "transitions": [
+        { "event": "audioComplete", "next": "dial_partner" }
+      ],
+      "properties": {
+        "offset": { "x": 450, "y": 600 },
+        "say": "Connecting you now. Please hold.",
+        "voice": "Polly.Amy-Neural"
+      }
+    },
+    {
+      "name": "dial_partner",
+      "type": "connect-call-to",
+      "transitions": [
+        { "event": "callCompleted", "next": "check_partner" },
+        { "event": "hangup", "next": "goodbye" }
+      ],
+      "properties": {
+        "offset": { "x": 450, "y": 750 },
+        "noun": "number",
+        "to": "+447918554877",
+        "caller_id": "{{flow.channel.address}}",
+        "timeout": "60"
+      }
+    },
+    {
+      "name": "check_partner",
+      "type": "split-based-on",
+      "transitions": [
+        { "event": "noMatch", "next": "voicemail_partner" },
+        {
+          "event": "match",
+          "next": "goodbye",
+          "conditions": [
+            { "friendly_name": "If value equal_to completed", "type": "equal_to", "value": "completed", "arguments": ["{{widgets.dial_partner.DialCallStatus}}"] }
+          ]
+        }
+      ],
+      "properties": {
+        "offset": { "x": 450, "y": 900 },
+        "input": "{{widgets.dial_partner.DialCallStatus}}"
       }
     },
     {
@@ -111,8 +203,8 @@
         { "event": "audioComplete", "next": "record_partner" }
       ],
       "properties": {
-        "offset": { "x": 500, "y": 600 },
-        "say": "Thanks for calling. After the tone, please leave your name, your firm, the client and D 3 6 5 platform involved, and the best number to reach you. Sunday will call you back within one business day.",
+        "offset": { "x": 450, "y": 1050 },
+        "say": "Sorry we missed you. After the tone, please leave your name, your firm, the client and D 3 6 5 platform involved, and the best number to reach you. Sunday will call you back within one business day.",
         "voice": "Polly.Amy-Neural"
       }
     },
@@ -125,12 +217,58 @@
         { "event": "hangup", "next": "goodbye" }
       ],
       "properties": {
-        "offset": { "x": 500, "y": 800 },
+        "offset": { "x": 450, "y": 1200 },
         "play_beep": "true",
         "transcribe": true,
         "max_length": "120",
         "silence_timeout": "5",
         "trim": "true"
+      }
+    },
+
+    {
+      "name": "connecting_client",
+      "type": "say-play",
+      "transitions": [
+        { "event": "audioComplete", "next": "dial_client" }
+      ],
+      "properties": {
+        "offset": { "x": 800, "y": 600 },
+        "say": "Connecting you now. Please hold.",
+        "voice": "Polly.Amy-Neural"
+      }
+    },
+    {
+      "name": "dial_client",
+      "type": "connect-call-to",
+      "transitions": [
+        { "event": "callCompleted", "next": "check_client" },
+        { "event": "hangup", "next": "goodbye" }
+      ],
+      "properties": {
+        "offset": { "x": 800, "y": 750 },
+        "noun": "number",
+        "to": "+447918554877",
+        "caller_id": "{{flow.channel.address}}",
+        "timeout": "60"
+      }
+    },
+    {
+      "name": "check_client",
+      "type": "split-based-on",
+      "transitions": [
+        { "event": "noMatch", "next": "voicemail_client" },
+        {
+          "event": "match",
+          "next": "goodbye",
+          "conditions": [
+            { "friendly_name": "If value equal_to completed", "type": "equal_to", "value": "completed", "arguments": ["{{widgets.dial_client.DialCallStatus}}"] }
+          ]
+        }
+      ],
+      "properties": {
+        "offset": { "x": 800, "y": 900 },
+        "input": "{{widgets.dial_client.DialCallStatus}}"
       }
     },
     {
@@ -140,8 +278,8 @@
         { "event": "audioComplete", "next": "record_client" }
       ],
       "properties": {
-        "offset": { "x": 800, "y": 600 },
-        "say": "Thanks for calling. After the tone, please leave your name, company, a summary of the issue, and the best number to reach you. Sunday will call you back within one business day.",
+        "offset": { "x": 800, "y": 1050 },
+        "say": "Sorry we missed you. After the tone, please leave your name, company, a summary of the issue, and the best number to reach you. Sunday will call you back within one business day.",
         "voice": "Polly.Amy-Neural"
       }
     },
@@ -154,7 +292,7 @@
         { "event": "hangup", "next": "goodbye" }
       ],
       "properties": {
-        "offset": { "x": 800, "y": 800 },
+        "offset": { "x": 800, "y": 1200 },
         "play_beep": "true",
         "transcribe": true,
         "max_length": "120",
@@ -162,6 +300,7 @@
         "trim": "true"
       }
     },
+
     {
       "name": "voicemail_general",
       "type": "say-play",
@@ -169,7 +308,7 @@
         { "event": "audioComplete", "next": "record_general" }
       ],
       "properties": {
-        "offset": { "x": -300, "y": 800 },
+        "offset": { "x": -400, "y": 800 },
         "say": "After the tone, please leave your name, company, and reason for calling, along with the best number to reach you. Sunday will call you back within one business day.",
         "voice": "Polly.Amy-Neural"
       }
@@ -183,7 +322,7 @@
         { "event": "hangup", "next": "goodbye" }
       ],
       "properties": {
-        "offset": { "x": -300, "y": 1000 },
+        "offset": { "x": -400, "y": 1000 },
         "play_beep": "true",
         "transcribe": true,
         "max_length": "120",
@@ -196,8 +335,8 @@
       "type": "say-play",
       "transitions": [],
       "properties": {
-        "offset": { "x": 300, "y": 1000 },
-        "say": "Thank you for calling Chivora. We'll be in touch shortly. Goodbye.",
+        "offset": { "x": 300, "y": 1350 },
+        "say": "Thank you for calling Chivora. Goodbye.",
         "voice": "Polly.Amy-Neural"
       }
     }
