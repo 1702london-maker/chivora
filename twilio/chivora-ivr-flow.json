@@ -1,0 +1,215 @@
+{
+  "description": "Chivora IVR - welcome message + 3-option menu (new enquiry / partner-SI / existing client) with voicemail capture",
+  "states": [
+    {
+      "name": "Trigger",
+      "type": "trigger",
+      "transitions": [
+        { "event": "incomingMessage" },
+        { "event": "incomingCall", "next": "gather_menu" },
+        { "event": "incomingConversationMessage" }
+      ],
+      "properties": {
+        "offset": { "x": 0, "y": 0 }
+      }
+    },
+    {
+      "name": "gather_menu",
+      "type": "gather-input-on-call",
+      "transitions": [
+        { "event": "keypress", "next": "split_menu" },
+        { "event": "timeout", "next": "voicemail_general" }
+      ],
+      "properties": {
+        "offset": { "x": 0, "y": 200 },
+        "loop": "1",
+        "finish_on_key": "#",
+        "number_of_digits": "1",
+        "gather_language": "en-GB",
+        "profanity_filter": "false",
+        "say": "Welcome to Chivora, where your Dynamics 365 data migration gets handled cleanly, completely, and on time. We specialise exclusively in moving business data from SAP, Oracle, Sage, N A V and other legacy systems into Dynamics 365. Nothing else. To direct your call: press 1 if you're planning or running a D 3 6 5 migration and want to talk to us directly. Press 2 if you're a Microsoft Partner or Systems Integrator looking for specialist migration resource. Press 3 if you're an existing client and need support.",
+        "timeout": "8",
+        "stop_gather": "true",
+        "gather_voice": "Polly.Amy-Neural"
+      }
+    },
+    {
+      "name": "split_menu",
+      "type": "split-based-on",
+      "transitions": [
+        { "event": "noMatch", "next": "invalid_option" },
+        {
+          "event": "match",
+          "next": "voicemail_enquiry",
+          "conditions": [
+            { "friendly_name": "If value equal_to 1", "type": "equal_to", "value": "1", "arguments": ["{{widgets.gather_menu.Digits}}"] }
+          ]
+        },
+        {
+          "event": "match",
+          "next": "voicemail_partner",
+          "conditions": [
+            { "friendly_name": "If value equal_to 2", "type": "equal_to", "value": "2", "arguments": ["{{widgets.gather_menu.Digits}}"] }
+          ]
+        },
+        {
+          "event": "match",
+          "next": "voicemail_client",
+          "conditions": [
+            { "friendly_name": "If value equal_to 3", "type": "equal_to", "value": "3", "arguments": ["{{widgets.gather_menu.Digits}}"] }
+          ]
+        }
+      ],
+      "properties": {
+        "offset": { "x": 0, "y": 400 },
+        "input": "{{widgets.gather_menu.Digits}}"
+      }
+    },
+    {
+      "name": "invalid_option",
+      "type": "say-play",
+      "transitions": [
+        { "event": "audioComplete", "next": "voicemail_general" }
+      ],
+      "properties": {
+        "offset": { "x": -300, "y": 600 },
+        "say": "Sorry, I didn't get a valid option. Let me take a message instead.",
+        "voice": "Polly.Amy-Neural"
+      }
+    },
+    {
+      "name": "voicemail_enquiry",
+      "type": "say-play",
+      "transitions": [
+        { "event": "audioComplete", "next": "record_enquiry" }
+      ],
+      "properties": {
+        "offset": { "x": 200, "y": 600 },
+        "say": "Thanks for calling about your D 3 6 5 migration. After the tone, please leave your name, company, source system, and the best number to reach you. Sunday will call you back within one business day.",
+        "voice": "Polly.Amy-Neural"
+      }
+    },
+    {
+      "name": "record_enquiry",
+      "type": "record-voicemail",
+      "transitions": [
+        { "event": "recording_complete", "next": "goodbye" },
+        { "event": "no_audio", "next": "goodbye" },
+        { "event": "hangup", "next": "goodbye" }
+      ],
+      "properties": {
+        "offset": { "x": 200, "y": 800 },
+        "play_beep": "true",
+        "transcribe": "true",
+        "max_length": "120",
+        "timeout": "5",
+        "trim": "trim-silence",
+        "channel": "mono"
+      }
+    },
+    {
+      "name": "voicemail_partner",
+      "type": "say-play",
+      "transitions": [
+        { "event": "audioComplete", "next": "record_partner" }
+      ],
+      "properties": {
+        "offset": { "x": 500, "y": 600 },
+        "say": "Thanks for calling. After the tone, please leave your name, your firm, the client and D 3 6 5 platform involved, and the best number to reach you. Sunday will call you back within one business day.",
+        "voice": "Polly.Amy-Neural"
+      }
+    },
+    {
+      "name": "record_partner",
+      "type": "record-voicemail",
+      "transitions": [
+        { "event": "recording_complete", "next": "goodbye" },
+        { "event": "no_audio", "next": "goodbye" },
+        { "event": "hangup", "next": "goodbye" }
+      ],
+      "properties": {
+        "offset": { "x": 500, "y": 800 },
+        "play_beep": "true",
+        "transcribe": "true",
+        "max_length": "120",
+        "timeout": "5",
+        "trim": "trim-silence",
+        "channel": "mono"
+      }
+    },
+    {
+      "name": "voicemail_client",
+      "type": "say-play",
+      "transitions": [
+        { "event": "audioComplete", "next": "record_client" }
+      ],
+      "properties": {
+        "offset": { "x": 800, "y": 600 },
+        "say": "Thanks for calling. After the tone, please leave your name, company, a summary of the issue, and the best number to reach you. Sunday will call you back within one business day.",
+        "voice": "Polly.Amy-Neural"
+      }
+    },
+    {
+      "name": "record_client",
+      "type": "record-voicemail",
+      "transitions": [
+        { "event": "recording_complete", "next": "goodbye" },
+        { "event": "no_audio", "next": "goodbye" },
+        { "event": "hangup", "next": "goodbye" }
+      ],
+      "properties": {
+        "offset": { "x": 800, "y": 800 },
+        "play_beep": "true",
+        "transcribe": "true",
+        "max_length": "120",
+        "timeout": "5",
+        "trim": "trim-silence",
+        "channel": "mono"
+      }
+    },
+    {
+      "name": "voicemail_general",
+      "type": "say-play",
+      "transitions": [
+        { "event": "audioComplete", "next": "record_general" }
+      ],
+      "properties": {
+        "offset": { "x": -300, "y": 800 },
+        "say": "After the tone, please leave your name, company, and reason for calling, along with the best number to reach you. Sunday will call you back within one business day.",
+        "voice": "Polly.Amy-Neural"
+      }
+    },
+    {
+      "name": "record_general",
+      "type": "record-voicemail",
+      "transitions": [
+        { "event": "recording_complete", "next": "goodbye" },
+        { "event": "no_audio", "next": "goodbye" },
+        { "event": "hangup", "next": "goodbye" }
+      ],
+      "properties": {
+        "offset": { "x": -300, "y": 1000 },
+        "play_beep": "true",
+        "transcribe": "true",
+        "max_length": "120",
+        "timeout": "5",
+        "trim": "trim-silence",
+        "channel": "mono"
+      }
+    },
+    {
+      "name": "goodbye",
+      "type": "say-play",
+      "transitions": [],
+      "properties": {
+        "offset": { "x": 300, "y": 1000 },
+        "say": "Thank you for calling Chivora. We'll be in touch shortly. Goodbye.",
+        "voice": "Polly.Amy-Neural"
+      }
+    }
+  ],
+  "initial_state": "Trigger",
+  "flags": {
+    "allow_concurrent_calls": true
+  }
+}
