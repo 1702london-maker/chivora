@@ -24,13 +24,11 @@
         "offset": { "x": 0, "y": 200 },
         "loop": "1",
         "finish_on_key": "#",
-        "number_of_digits": "1",
-        "gather_language": "en-GB",
+        "num_digits": "1",
         "profanity_filter": "false",
         "say": "Welcome to Chivora, where your Dynamics 365 data migration gets handled cleanly, completely, and on time. We specialise exclusively in moving business data from SAP, Oracle, Sage, N A V and other legacy systems into Dynamics 365. Nothing else. To direct your call: press 1 if you're planning or running a D 3 6 5 migration and want to talk to us directly. Press 2 if you're a Microsoft Partner or Systems Integrator looking for specialist migration resource. Press 3 if you're an existing client and need support.",
         "timeout": "8",
-        "stop_gather": "true",
-        "gather_voice": "Polly.Amy-Neural"
+        "voice": "Polly.Amy-Neural"
       }
     },
     {
@@ -93,18 +91,17 @@
       "name": "record_enquiry",
       "type": "record-voicemail",
       "transitions": [
-        { "event": "recording_complete", "next": "goodbye" },
-        { "event": "no_audio", "next": "goodbye" },
+        { "event": "recordingComplete", "next": "goodbye" },
+        { "event": "noAudio", "next": "goodbye" },
         { "event": "hangup", "next": "goodbye" }
       ],
       "properties": {
         "offset": { "x": 200, "y": 800 },
         "play_beep": "true",
-        "transcribe": "true",
+        "transcribe": true,
         "max_length": "120",
-        "timeout": "5",
-        "trim": "trim-silence",
-        "channel": "mono"
+        "silence_timeout": "5",
+        "trim": "true"
       }
     },
     {
@@ -123,18 +120,17 @@
       "name": "record_partner",
       "type": "record-voicemail",
       "transitions": [
-        { "event": "recording_complete", "next": "goodbye" },
-        { "event": "no_audio", "next": "goodbye" },
+        { "event": "recordingComplete", "next": "goodbye" },
+        { "event": "noAudio", "next": "goodbye" },
         { "event": "hangup", "next": "goodbye" }
       ],
       "properties": {
         "offset": { "x": 500, "y": 800 },
         "play_beep": "true",
-        "transcribe": "true",
+        "transcribe": true,
         "max_length": "120",
-        "timeout": "5",
-        "trim": "trim-silence",
-        "channel": "mono"
+        "silence_timeout": "5",
+        "trim": "true"
       }
     },
     {
@@ -153,18 +149,17 @@
       "name": "record_client",
       "type": "record-voicemail",
       "transitions": [
-        { "event": "recording_complete", "next": "goodbye" },
-        { "event": "no_audio", "next": "goodbye" },
+        { "event": "recordingComplete", "next": "goodbye" },
+        { "event": "noAudio", "next": "goodbye" },
         { "event": "hangup", "next": "goodbye" }
       ],
       "properties": {
         "offset": { "x": 800, "y": 800 },
         "play_beep": "true",
-        "transcribe": "true",
+        "transcribe": true,
         "max_length": "120",
-        "timeout": "5",
-        "trim": "trim-silence",
-        "channel": "mono"
+        "silence_timeout": "5",
+        "trim": "true"
       }
     },
     {
@@ -183,18 +178,17 @@
       "name": "record_general",
       "type": "record-voicemail",
       "transitions": [
-        { "event": "recording_complete", "next": "goodbye" },
-        { "event": "no_audio", "next": "goodbye" },
+        { "event": "recordingComplete", "next": "goodbye" },
+        { "event": "noAudio", "next": "goodbye" },
         { "event": "hangup", "next": "goodbye" }
       ],
       "properties": {
         "offset": { "x": -300, "y": 1000 },
         "play_beep": "true",
-        "transcribe": "true",
+        "transcribe": true,
         "max_length": "120",
-        "timeout": "5",
-        "trim": "trim-silence",
-        "channel": "mono"
+        "silence_timeout": "5",
+        "trim": "true"
       }
     },
     {
