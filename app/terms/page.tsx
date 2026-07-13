@@ -27,7 +27,7 @@ export default function TermsPage() {
         of use will be published here following legal review.
       </p>
       <p>
-        Questions can be directed to hello@chivora.co.uk.
+        Questions can be directed to info@chivora.co.uk.
       </p>
     </LegalPageLayout>
   );

@@ -20,7 +20,7 @@ export default function CookiesPage() {
         along with any consent controls required.
       </p>
       <p>
-        Questions about cookie use can be directed to hello@chivora.co.uk.
+        Questions about cookie use can be directed to info@chivora.co.uk.
       </p>
     </LegalPageLayout>
   );

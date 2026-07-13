@@ -74,7 +74,7 @@ export function Footer() {
             <ul className="mt-4 space-y-3 text-sm text-ink-soft">
               <li className="group flex items-center gap-2">
                 <Mail className="h-3.5 w-3.5 stroke-ink-mute transition-colors group-hover:stroke-blue" />
-                hello@chivora.co.uk
+                info@chivora.co.uk
               </li>
               <li className="group flex items-center gap-2">
                 <Phone className="h-3.5 w-3.5 stroke-ink-mute transition-colors group-hover:stroke-blue" />

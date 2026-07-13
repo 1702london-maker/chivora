@@ -26,7 +26,7 @@ export default function PrivacyPage() {
         published here following legal review.
       </p>
       <p>
-        Questions about your data can be directed to hello@chivora.co.uk.
+        Questions about your data can be directed to info@chivora.co.uk.
       </p>
     </LegalPageLayout>
   );

@@ -44,7 +44,7 @@ export function ChatWidget() {
       const data = await res.json();
       const reply = res.ok
         ? data.reply
-        : "Sorry, something's not quite working on my end. You're welcome to call +44 151 453 4230 or email hello@chivora.co.uk in the meantime.";
+        : "Sorry, something's not quite working on my end. You're welcome to call +44 151 453 4230 or email info@chivora.co.uk in the meantime.";
       setMessages((m) => [...m, { role: "assistant", content: reply }]);
     } catch {
       setMessages((m) => [
@@ -52,7 +52,7 @@ export function ChatWidget() {
         {
           role: "assistant",
           content:
-            "Sorry, something's not quite working on my end. You're welcome to call +44 151 453 4230 or email hello@chivora.co.uk in the meantime.",
+            "Sorry, something's not quite working on my end. You're welcome to call +44 151 453 4230 or email info@chivora.co.uk in the meantime.",
         },
       ]);
     } finally {

@@ -41,7 +41,7 @@ export default function ContactPage() {
                 <ul className="mt-4 flex flex-col gap-3 text-sm text-ink-soft">
                   <li className="flex items-center gap-2">
                     <Mail className="h-4 w-4 stroke-ink-mute" />
-                    hello@chivora.co.uk
+                    info@chivora.co.uk
                   </li>
                   <li className="flex items-center gap-2">
                     <Phone className="h-4 w-4 stroke-ink-mute" />

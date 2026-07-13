@@ -173,7 +173,7 @@ export function ContactForm() {
 
       {status === "error" && (
         <p className="text-sm text-amber">
-          Something went wrong. Please try again or email hello@chivora.co.uk.
+          Something went wrong. Please try again or email info@chivora.co.uk.
         </p>
       )}
     </form>
