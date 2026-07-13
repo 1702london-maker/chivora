@@ -6,14 +6,18 @@ import { DATA_DOMAINS, SOURCE_SYSTEMS } from "@/lib/constants";
 
 const SIZE = 640;
 const CENTER = SIZE / 2;
-const R1 = 180;
-const R2 = 280;
+const R1 = 165;
+const R2 = 235;
 
+// Returns position as a percentage of the container (not raw pixels), so
+// chips stay correctly placed when the container is scaled down by
+// `maxWidth: 100%` on narrow viewports — raw pixel offsets computed for the
+// 640px design size would otherwise overflow a shrunk container.
 function polar(r: number, angleDeg: number) {
   const rad = (angleDeg * Math.PI) / 180;
   return {
-    x: Math.round((CENTER + r * Math.cos(rad)) * 100) / 100,
-    y: Math.round((CENTER + r * Math.sin(rad)) * 100) / 100,
+    x: Math.round(((CENTER + r * Math.cos(rad)) / SIZE) * 10000) / 100,
+    y: Math.round(((CENTER + r * Math.sin(rad)) / SIZE) * 10000) / 100,
   };
 }
 
@@ -100,14 +104,14 @@ export function MigrationOrbit() {
             <motion.div
               key={d.code}
               className="absolute"
-              style={{ left: `${pos.x}px`, top: `${pos.y}px`, translate: "-50% -50%" }}
+              style={{ left: `${pos.x}%`, top: `${pos.y}%`, translate: "-50% -50%" }}
               animate={prefersReducedMotion || paused ? {} : { rotate: -360 }}
               transition={{ duration: 48, repeat: Infinity, ease: "linear" }}
             >
               <button
                 onMouseEnter={() => setHovered(d.code)}
                 onMouseLeave={() => setHovered(null)}
-                className={`font-mono-chivora rounded-full bg-white px-3 py-1.5 text-xs font-medium text-ink transition-all duration-200 ${
+                className={`font-mono-chivora whitespace-nowrap rounded-full bg-white px-2 py-1 text-[10px] font-medium text-ink transition-all duration-200 sm:px-3 sm:py-1.5 sm:text-xs ${
                   hovered === d.code ? "scale-[1.12] ring-2 ring-blue" : ""
                 }`}
               >
@@ -144,11 +148,11 @@ export function MigrationOrbit() {
             <motion.div
               key={s.slug}
               className="absolute"
-              style={{ left: `${pos.x}px`, top: `${pos.y}px`, translate: "-50% -50%" }}
+              style={{ left: `${pos.x}%`, top: `${pos.y}%`, translate: "-50% -50%" }}
               animate={prefersReducedMotion || paused ? {} : { rotate: 360 }}
               transition={{ duration: 72, repeat: Infinity, ease: "linear" }}
             >
-              <span className="font-mono-chivora rounded-full bg-navy-soft px-3 py-1.5 text-xs font-medium text-white">
+              <span className="font-mono-chivora whitespace-nowrap rounded-full bg-navy-soft px-2 py-1 text-[10px] font-medium text-white sm:px-3 sm:py-1.5 sm:text-xs">
                 {s.name.toUpperCase()}
               </span>
             </motion.div>
@@ -160,8 +164,8 @@ export function MigrationOrbit() {
       <div
         className="absolute flex items-center justify-center rounded-full bg-white"
         style={{
-          left: CENTER,
-          top: CENTER,
+          left: "50%",
+          top: "50%",
           width: 96,
           height: 96,
           translate: "-50% -50%",
@@ -202,7 +206,7 @@ function OrbitParticles() {
         <motion.span
           key={i}
           className="absolute h-[3px] w-[3px] rounded-full bg-blue"
-          style={{ left: CENTER, top: CENTER }}
+          style={{ left: "50%", top: "50%" }}
           animate={{
             x: [0, SIZE / 2 - 70 - CENTER],
             y: [0, SIZE / 2 - 70 - CENTER],

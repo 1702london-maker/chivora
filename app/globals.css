@@ -70,6 +70,12 @@
   --ease-inout: var(--ease-inout);
 }
 
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);

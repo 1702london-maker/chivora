@@ -153,7 +153,7 @@ function FullPipeline({
 
   if (prefersReducedMotion) {
     return (
-      <div className="relative w-full max-w-[560px] mx-auto grid grid-cols-[1fr_auto_1fr] gap-4 items-center">
+      <div className="relative mx-auto grid w-full max-w-[560px] grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-2 sm:gap-4">
         <StaticCard
           header={`${systems[0]} — CUSTOMERS`}
           headerColor="ink"
@@ -180,7 +180,7 @@ function FullPipeline({
   return (
     <div
       ref={containerRef}
-      className="relative w-full max-w-[560px] mx-auto h-[520px]"
+      className="relative mx-auto h-[520px] w-full max-w-[560px] overflow-hidden"
     >
       <motion.div
         animate={{ x: parallax.x, y: parallax.y }}
@@ -189,14 +189,14 @@ function FullPipeline({
       >
         <div className="absolute -inset-20 -z-10 rounded-full bg-[radial-gradient(closest-side,rgb(37_99_235/0.05),transparent)]" />
 
-        <div className="grid h-full grid-cols-[1fr_100px_1fr] items-center gap-2">
+        <div className="grid h-full grid-cols-[minmax(0,1fr)_56px_minmax(0,1fr)] items-center gap-1 sm:grid-cols-[minmax(0,1fr)_100px_minmax(0,1fr)] sm:gap-2">
           {/* LEFT CARD */}
-          <div className="relative rounded-2xl border border-line bg-white p-4 shadow-[var(--shadow-card)]">
+          <div className="relative min-w-0 overflow-hidden rounded-2xl border border-line bg-white p-2.5 shadow-[var(--shadow-card)] sm:p-4">
             <motion.p
               key={locked ? systems[0] : systemIndex}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="font-mono-chivora mb-3 text-[0.6875rem] tracking-[0.08em] text-ink-mute uppercase"
+              className="font-mono-chivora mb-3 truncate text-[0.5625rem] tracking-[0.06em] text-ink-mute uppercase sm:text-[0.6875rem] sm:tracking-[0.08em]"
             >
               {systems[locked ? 0 : systemIndex]} — CUSTOMERS
             </motion.p>
@@ -207,7 +207,7 @@ function FullPipeline({
                 return (
                   <div
                     key={row}
-                    className={`relative flex items-center gap-2 rounded-md py-1 pl-2 transition-opacity duration-300 ${
+                    className={`relative flex min-w-0 items-center gap-1.5 rounded-md py-1 pl-2 transition-opacity duration-300 sm:gap-2 ${
                       gone ? "opacity-30" : "opacity-100"
                     }`}
                   >
@@ -215,10 +215,10 @@ function FullPipeline({
                       <span className="absolute left-0 top-0 h-full w-[3px] rounded-full bg-amber" />
                     )}
                     {dirty && (
-                      <span className="h-1.5 w-1.5 rounded-full bg-amber" />
+                      <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-amber" />
                     )}
-                    <span className="h-2.5 w-16 rounded bg-gray-200" />
-                    <span className="h-2.5 w-10 rounded bg-gray-100" />
+                    <span className="h-2.5 w-8 shrink-0 rounded bg-gray-200 sm:w-16" />
+                    <span className="h-2.5 w-5 shrink-0 rounded bg-gray-100 sm:w-10" />
                   </div>
                 );
               })}
@@ -226,7 +226,7 @@ function FullPipeline({
           </div>
 
           {/* PIPELINE */}
-          <div className="relative flex h-full flex-col items-center justify-center gap-8">
+          <div className="relative flex h-full flex-col items-center justify-center gap-4 sm:gap-8">
             <div className="absolute left-1/2 top-4 bottom-4 w-2 -translate-x-1/2 rounded-full bg-blue-tint" />
             {NODES.map((node) => (
               <NodeIcon key={node.key} node={node} active />
@@ -243,8 +243,8 @@ function FullPipeline({
           </div>
 
           {/* RIGHT CARD */}
-          <div className="relative rounded-2xl border border-line bg-white p-4 shadow-[var(--shadow-card)]">
-            <p className="font-mono-chivora mb-3 text-[0.6875rem] tracking-[0.08em] text-blue uppercase">
+          <div className="relative min-w-0 overflow-hidden rounded-2xl border border-line bg-white p-2.5 shadow-[var(--shadow-card)] sm:p-4">
+            <p className="font-mono-chivora mb-3 truncate text-[0.5625rem] tracking-[0.06em] text-blue uppercase sm:text-[0.6875rem] sm:tracking-[0.08em]">
               {targetLabel}
             </p>
             <div className="flex flex-col gap-3">
@@ -257,13 +257,13 @@ function FullPipeline({
                       ? { opacity: 1, scale: 1 }
                       : { opacity: 0.4, scale: 0.98 }
                   }
-                  className="relative flex items-center gap-2 rounded-md py-1 pl-2"
+                  className="relative flex min-w-0 items-center gap-1.5 rounded-md py-1 pl-2 sm:gap-2"
                 >
                   {landed[row] ? (
                     <>
                       <span className="absolute left-0 top-0 h-full w-[3px] rounded-full bg-blue" />
-                      <span className="h-2.5 w-16 rounded bg-blue/20" />
-                      <span className="h-2.5 w-10 rounded bg-blue/10" />
+                      <span className="h-2.5 w-8 shrink-0 rounded bg-blue/20 sm:w-16" />
+                      <span className="h-2.5 w-5 shrink-0 rounded bg-blue/10 sm:w-10" />
                     </>
                   ) : (
                     <span className="h-6 w-full rounded border border-dashed border-line" />
@@ -277,7 +277,7 @@ function FullPipeline({
                 initial={{ scale: 0, rotate: -6, opacity: 0 }}
                 animate={{ scale: [0, 1.1, 1], rotate: -6, opacity: 1 }}
                 transition={{ duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }}
-                className="font-mono-chivora absolute -top-4 right-4 rounded border-2 border-success px-3 py-1 text-xs font-medium text-success bg-white"
+                className="font-mono-chivora absolute -top-3 right-1 rounded border-2 border-success bg-white px-1.5 py-0.5 text-[8px] font-medium text-success sm:-top-4 sm:right-4 sm:px-3 sm:py-1 sm:text-xs"
               >
                 RECONCILED ✓ 100%
               </motion.div>
@@ -398,17 +398,17 @@ function NodeIcon({
   large?: boolean;
 }) {
   const { Icon, label } = node;
-  const size = large ? "h-[64px] w-[64px]" : "h-[34px] w-[34px]";
+  const size = large ? "h-[64px] w-[64px]" : "h-[28px] w-[28px] sm:h-[34px] sm:w-[34px]";
   return (
-    <div className="flex flex-col items-center gap-2">
+    <div className="flex flex-col items-center gap-1 sm:gap-2">
       <div
-        className={`flex items-center justify-center rounded-full ${size} ${
+        className={`flex shrink-0 items-center justify-center rounded-full ${size} ${
           active ? "bg-blue-tint" : "bg-gray-100"
         }`}
       >
-        <Icon className={large ? "h-7 w-7 stroke-blue" : "h-4 w-4 stroke-blue"} />
+        <Icon className={large ? "h-7 w-7 stroke-blue" : "h-3.5 w-3.5 stroke-blue sm:h-4 sm:w-4"} />
       </div>
-      <span className="font-mono-chivora text-[10px] tracking-wide text-ink-mute uppercase">
+      <span className="font-mono-chivora max-w-[56px] text-center text-[7px] leading-tight tracking-normal text-ink-mute uppercase sm:max-w-none sm:text-[10px] sm:tracking-wide">
         {label}
       </span>
     </div>
@@ -486,9 +486,9 @@ function StaticCard({
   stamp?: boolean;
 }) {
   return (
-    <div className="relative rounded-2xl border border-line bg-white p-4 shadow-[var(--shadow-card)]">
+    <div className="relative min-w-0 overflow-hidden rounded-2xl border border-line bg-white p-2.5 shadow-[var(--shadow-card)] sm:p-4">
       <p
-        className={`font-mono-chivora mb-3 text-[0.6875rem] tracking-[0.08em] uppercase ${
+        className={`font-mono-chivora mb-3 truncate text-[0.5625rem] tracking-[0.06em] uppercase sm:text-[0.6875rem] sm:tracking-[0.08em] ${
           headerColor === "blue" ? "text-blue" : "text-ink-mute"
         }`}
       >
@@ -496,27 +496,27 @@ function StaticCard({
       </p>
       <div className="flex flex-col gap-3">
         {rows.map((row) => (
-          <div key={row} className="relative flex items-center gap-2 py-1 pl-2">
+          <div key={row} className="relative flex min-w-0 items-center gap-1.5 py-1 pl-2 sm:gap-2">
             {landed ? (
               <>
                 <span className="absolute left-0 top-0 h-full w-[3px] rounded-full bg-blue" />
-                <span className="h-2.5 w-16 rounded bg-blue/20" />
-                <span className="h-2.5 w-10 rounded bg-blue/10" />
+                <span className="h-2.5 w-8 shrink-0 rounded bg-blue/20 sm:w-16" />
+                <span className="h-2.5 w-5 shrink-0 rounded bg-blue/10 sm:w-10" />
               </>
             ) : (
               <>
                 {dirty && DIRTY_ROWS.includes(row) && (
                   <span className="absolute left-0 top-0 h-full w-[3px] rounded-full bg-amber" />
                 )}
-                <span className="h-2.5 w-16 rounded bg-gray-200" />
-                <span className="h-2.5 w-10 rounded bg-gray-100" />
+                <span className="h-2.5 w-8 shrink-0 rounded bg-gray-200 sm:w-16" />
+                <span className="h-2.5 w-5 shrink-0 rounded bg-gray-100 sm:w-10" />
               </>
             )}
           </div>
         ))}
       </div>
       {stamp && (
-        <div className="font-mono-chivora absolute -top-4 right-4 rounded border-2 border-success px-3 py-1 text-xs font-medium text-success bg-white -rotate-6">
+        <div className="font-mono-chivora absolute -top-3 right-1 rounded border-2 border-success bg-white px-1.5 py-0.5 text-[8px] font-medium text-success -rotate-6 sm:-top-4 sm:right-4 sm:px-3 sm:py-1 sm:text-xs">
           RECONCILED ✓ 100%
         </div>
       )}
