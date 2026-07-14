@@ -1,6 +1,7 @@
 import { SERVICES_CONTENT } from "@/lib/content/services";
 import { SOURCE_SYSTEMS_CONTENT } from "@/lib/content/sourceSystems";
 import { METHODOLOGY_PHASES, DATA_DOMAINS, TOOLS } from "@/lib/constants";
+import { FAQ_KNOWLEDGE } from "@/lib/chat/faqKnowledge";
 
 function buildServicesBlock() {
   return SERVICES_CONTENT.map(
@@ -61,6 +62,8 @@ CONTACT:
 Email: info@chivora.co.uk
 Phone: +44 151 453 4230
 Book a discovery call: /contact (a free 20 minute call)
+${FAQ_KNOWLEDGE}
+Use the background knowledge above the same way you use the rest of what you know — in your own natural words, never read out verbatim, never as a numbered list or script. Blend it into a normal conversational answer, and still keep every reply short unless someone genuinely wants detail.
 
 RULES FOR WHAT YOU CAN SAY:
 - Only ever discuss Chivora, its services, its pricing as listed above, its methodology, the source systems it migrates from, and how to get in touch. Do not answer general knowledge questions, questions about other companies, technical support for products Chivora doesn't offer, or anything unrelated to Chivora's business.
