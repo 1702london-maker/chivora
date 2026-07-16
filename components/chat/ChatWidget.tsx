@@ -7,7 +7,7 @@ import { MessageCircle, X, Send } from "lucide-react";
 type Message = { role: "user" | "assistant"; content: string };
 
 const GREETING =
-  "Hi there, I'm Ed. Lovely to have you here. Whether you're exploring what Chivora does, trying to work out which service fits your migration, or just have a quick question, I'm happy to help. What can I do for you?";
+  "Hi there, I'm Andy. Lovely to have you here. Whether you're exploring what Chivora does, trying to work out which service fits your migration, or just have a quick question, I'm happy to help. What can I do for you?";
 
 export function ChatWidget() {
   const [open, setOpen] = useState(false);
@@ -74,10 +74,10 @@ export function ChatWidget() {
             <div className="flex items-center justify-between bg-navy px-5 py-4">
               <div className="flex items-center gap-2.5">
                 <span className="flex h-8 w-8 items-center justify-center rounded-full bg-blue">
-                  <span className="font-display text-sm font-bold text-white">E</span>
+                  <span className="font-display text-sm font-bold text-white">A</span>
                 </span>
                 <div>
-                  <p className="font-display text-sm font-medium text-white">Ed</p>
+                  <p className="font-display text-sm font-medium text-white">Andy</p>
                   <p className="font-mono-chivora text-[10px] tracking-wide text-white/50 uppercase">
                     Chivora
                   </p>

@@ -1,8 +1,8 @@
-// Extra background knowledge for Ed, sourced from the "D365 Data Migration
-// FAQ" reference doc, condensed into Ed's own voice. This supplements (and
+// Extra background knowledge for Andy, sourced from the "D365 Data Migration
+// FAQ" reference doc, condensed into Andy's own voice. This supplements (and
 // must stay consistent with) the site's own content — where the reference
 // doc listed source systems beyond the 7 Chivora officially works with, that
-// claim was NOT carried over, so Ed never contradicts the site's stated scope.
+// claim was NOT carried over, so Andy never contradicts the site's stated scope.
 export const FAQ_KNOWLEDGE = `
 GENERAL BACKGROUND KNOWLEDGE — use this to answer common questions naturally, in your own words, not as a script:
 
